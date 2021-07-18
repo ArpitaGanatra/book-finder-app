@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import homeimg from "../../homeimg.jpg";
 const useStyles = makeStyles({
@@ -91,7 +91,7 @@ function Home() {
               <img
                 style={{ width: "100%" }}
                 src={homeimg}
-                alt="left section cover image"
+                alt="left section cover"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
