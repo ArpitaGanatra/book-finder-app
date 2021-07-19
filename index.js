@@ -3,9 +3,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import bookRoutes from "./routes/books.js";
-import { CONNECTION_URL } from "./config/db.js";
+import dotenv from "dotenv";
 
 const app = express();
+dotenv.config();
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
@@ -16,7 +17,7 @@ app.use("/books", bookRoutes);
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: "true",
   })
@@ -26,3 +27,13 @@ mongoose
   .catch((error) => console.log(error.message));
 
 mongoose.set("useFindAndModify", false);
+
+// Accessing the path module
+const path = require("path");
+
+// Step 1:
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+// Step 2:
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});

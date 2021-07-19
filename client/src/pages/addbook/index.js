@@ -40,10 +40,9 @@ function AddBook() {
 
   const dispatch = useDispatch();
 
-  const [imgFile, setimgFile] = useState("");
   const { enqueueSnackbar } = useSnackbar();
 
-  const NewBlogSchema = Yup.object().shape({
+  const NewBookSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
     author: Yup.string().required("Author is required"),
     description: Yup.string().required("Description is required"),
@@ -58,7 +57,7 @@ function AddBook() {
       description: "",
       imgurl: "",
     },
-    validationSchema: NewBlogSchema,
+    validationSchema: NewBookSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setErrors }) => {
       try {
         const bookdata = {
@@ -71,10 +70,7 @@ function AddBook() {
         };
         await dispatch(createBook(bookdata));
 
-        await resetForm();
-        console.log("title", bookdata);
-        console.log("title", imgFile);
-        debugger;
+        resetForm();
 
         setSubmitting(false);
         enqueueSnackbar("Book added to collection", { variant: "success" });
