@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
+    fontFamily: "Plus Jakarta Display, serif",
     textAlign: "justify",
     display: " -webkit-box",
     "-webkit-line-clamp": "1",
@@ -209,6 +210,7 @@ function BookCard(book) {
                   component="h5"
                   variant="h5"
                   style={{
+                    fontFamily: "Plus Jakarta Display, serif",
                     textAlign: "justify",
                   }}
                 >
@@ -217,7 +219,10 @@ function BookCard(book) {
                 <Typography
                   variant="subtitle1"
                   color="textSecondary"
-                  style={{ display: "flex" }}
+                  style={{
+                    fontFamily: "Plus Jakarta Display, serif",
+                    display: "flex",
+                  }}
                 >
                   <i>{`By ${author}`}</i>
                 </Typography>
@@ -233,11 +238,6 @@ function BookCard(book) {
             </div>
           </div>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Save changes
-          </Button>
-        </DialogActions>
       </Dialog>
 
       <Card className={classes.cardroot}>

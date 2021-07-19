@@ -66,12 +66,15 @@ function AddBook() {
           author: values.author,
           published_year: values.published_year,
           description: values.description,
-          imgurl: imgFile,
+          // imgurl: imgFile,
+          imgurl: values.imgurl,
         };
         await dispatch(createBook(bookdata));
 
+        await resetForm();
         console.log("title", bookdata);
-        resetForm();
+        console.log("title", imgFile);
+        debugger;
 
         setSubmitting(false);
         enqueueSnackbar("Book added to collection", { variant: "success" });
@@ -104,7 +107,7 @@ function AddBook() {
           </Link>
         </div>
         <div style={{ minWidth: "1200px", display: "flex" }}></div>
-        <NewBookForm formik={formik} imgFileData={setimgFile} />
+        <NewBookForm formik={formik} />
       </Container>
     </>
   );

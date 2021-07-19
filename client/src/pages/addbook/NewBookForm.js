@@ -18,6 +18,7 @@ import {
   CardMedia,
 } from "@material-ui/core";
 import emptyimg from "./img_empty_state.jpg";
+import FileBase64 from "react-filebase64";
 
 // ----------------------------------------------------------------------
 
@@ -168,30 +169,10 @@ function NewPostForm({
     touched,
     handleSubmit,
     isSubmitting,
-
+    setFieldValue,
     getFieldProps,
   } = formik;
   const [imgurl1, setimgurl1] = useState("");
-
-  const handleFileRead = async (event) => {
-    const file = event.target.files[0];
-    const base64 = await convertBase64(file);
-    imgFileData(base64);
-    setimgurl1(base64);
-  };
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   return (
     <>
@@ -317,16 +298,12 @@ function NewPostForm({
                   />
 
                   <div className={classes.margin}>
-                    <input
-                      id="originalFileName"
-                      type="file"
-                      inputProps={{
-                        accept: "image/*",
+                    <FileBase64
+                      multiple={false}
+                      onDone={({ base64 }) => {
+                        setFieldValue("imgurl", base64);
+                        setimgurl1(base64);
                       }}
-                      required
-                      label="Document"
-                      name="originalFileName"
-                      onChange={(e) => handleFileRead(e)}
                     />
                   </div>
                   <Box sx={{ display: "flex", justifyContent: "center" }}>
