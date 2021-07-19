@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import homeimg from "../../homeimg.jpg";
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
     width: "100%",
@@ -15,6 +15,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100vw",
+      padding: "0px 0px",
+    },
   },
   contentsection: {
     position: "relative",
@@ -46,6 +50,10 @@ const useStyles = makeStyles({
     WebkitBoxPack: "justify",
     justifyContent: "space-between",
     maxWidth: "75%",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100%",
+      padding: " 0px 20px",
+    },
   },
   heading: {
     fontFamily: "Plus Jakarta Display, serif",
@@ -56,6 +64,9 @@ const useStyles = makeStyles({
     marginTop: "0",
     marginBottom: ".5em",
     textAlign: "initial",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "40px",
+    },
   },
   subheading: {
     fontFamily: "Plus Jakarta Display, serif",
@@ -64,6 +75,9 @@ const useStyles = makeStyles({
     fontSize: "21px",
     lineHeight: 1.41,
     textAlign: "initial",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "18px",
+    },
   },
   button_link: {
     fontSize: "1rem",
@@ -78,8 +92,11 @@ const useStyles = makeStyles({
     transition: "all 0.3s ease-in-out 0s",
     boxShadow: "rgb(23 31 114 / 20%) 0px 16px 30px",
     textDecoration: "none",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "151px",
+    },
   },
-});
+}));
 function Home() {
   const classes = useStyles();
   return (

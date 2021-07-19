@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
+    [theme.breakpoints.down("sm")]: {
+      padding: "0px 20px",
+      maxWidth: "100vw",
+    },
   },
 }));
 
@@ -82,8 +86,7 @@ function AddBook() {
   return (
     <>
       <Container className={classes.container}>
-        <Link
-          href="/"
+        <div
           style={{
             position: "relative",
             display: "flex",
@@ -91,13 +94,15 @@ function AddBook() {
             marginLeft: "80px",
           }}
         >
-          <IconButton>
-            <ArrowBackRoundedIcon
-              fontSize="large"
-              style={{ color: "rgb(24,33,109)" }}
-            />
-          </IconButton>
-        </Link>
+          <Link href="/">
+            <IconButton>
+              <ArrowBackRoundedIcon
+                fontSize="large"
+                style={{ color: "rgb(24,33,109)" }}
+              />
+            </IconButton>
+          </Link>
+        </div>
         <div style={{ minWidth: "1200px", display: "flex" }}></div>
         <NewBookForm formik={formik} imgFileData={setimgFile} />
       </Container>

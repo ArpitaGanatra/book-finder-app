@@ -83,6 +83,12 @@ const useStyles = makeStyles((theme) => ({
   cover: {
     height: "225px",
   },
+  title: {
+    display: " -webkit-box",
+    "-webkit-line-clamp": 1,
+    "-webkit-box-orient": "vertical",
+    overflow: "hidden",
+  },
   description: {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
@@ -130,9 +136,9 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
 
     borderRadius: "4px",
-    padding: "13px 0px",
+    // padding: "13px 0px",
     cursor: "pointer",
-    marginTop: "0.625rem",
+    // marginTop: "0.625rem",
     maxWidth: "180px",
     transition: "all 0.3s ease-in-out 0s",
 
@@ -209,7 +215,11 @@ function NewPostForm({
             </CardMedia>
             <div className={classes.details}>
               <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5">
+                <Typography
+                  component="h5"
+                  variant="h5"
+                  className={classes.title}
+                >
                   {values.title}
                 </Typography>
                 <Typography
@@ -235,7 +245,7 @@ function NewPostForm({
                 </div>
               </CardContent>
 
-              <CardActions>
+              <CardActions style={{ padding: "0px", paddingLeft: "16px" }}>
                 <Button
                   size="small"
                   color="primary"
