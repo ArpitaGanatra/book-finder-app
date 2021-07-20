@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import bookRoutes from "./routes/books.js";
 import dotenv from "dotenv";
+import path from "path";
 
 const app = express();
 dotenv.config();
@@ -28,11 +29,12 @@ mongoose
 
 mongoose.set("useFindAndModify", false);
 
+// Accessing the path module
+// const path = require("path");
+
 // Step 1:
-if (process.env.NODE_ENV == "production") {
-  app.use(express.static("client/build"));
-}
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 // Step 2:
-// app.get("*", function (req, resp) {
-//   response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
+app.get("*", function (req, res) {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
