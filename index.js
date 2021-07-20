@@ -28,9 +28,6 @@ mongoose
 
 mongoose.set("useFindAndModify", false);
 
-// Accessing the path module
-const path = require("path");
-
 // Step 1:
 if (process.env.NODE_ENV == "production") {
   app.use(express.static("client/build"));
