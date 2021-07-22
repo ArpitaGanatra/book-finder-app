@@ -96,6 +96,11 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "151px",
     },
   },
+  gridcontainer: {
+    [theme.breakpoints.down("sm")]: {
+      padding: "20px",
+    },
+  },
 }));
 function Home() {
   const classes = useStyles();
@@ -103,7 +108,7 @@ function Home() {
     <div className={classes.container}>
       <section className={classes.contentsection}>
         <div className={classes.animate}>
-          <Grid container>
+          <Grid container className={classes.gridcontainer}>
             <Grid item xs={12} sm={6}>
               <img
                 style={{ width: "100%" }}
